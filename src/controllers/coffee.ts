@@ -4,7 +4,6 @@ const coffeeType = {drinkType:'Coffee', name:'Latte'}
 app.get('/coffee', (req, res) => {
     const drinkType  = 'Coffee';
     const name = req.query.coffeeName;
-    console.log(name);
     if ((req.query.coffeeName === null) || (req.query.coffeeName === undefined))
         res.json(coffeeType);
     else
