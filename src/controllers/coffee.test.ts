@@ -18,6 +18,18 @@ the provided name
     });
     });
 */
+describe('Test coffee endpoint request with no query parameter', () => {
+    test('GET should return correct message', async () => {
+        const coffeeType = {drinkType:'Coffee', name:'Latte'}
+        const res = await request(app).get('/coffee');
+    
+    expect(res.statusCode).toEqual(200);
+    
+    expect(res.body).toEqual({drinkType:'Coffee',
+                              name:'Latte'})
+    });
+    });
+    
 
 describe('Test coffee endpoint request', () => {
 test('GET should return correct message', async () => {
@@ -30,6 +42,22 @@ expect(res.body).toEqual({drinkType:'Coffee',
                           name:'Latte'})
 });
 });
+
+/*
+const coffeeType1 = {drinkType:'Coffee', name:'Espresso'}
+app.get('/coffee', (req, res) => res.json(coffeeType1));
+*/
+describe('Test coffee endpoint request with query Espresso', () => {
+    test('GET should return correct message', async () => {
+        const coffeeType = {drinkType:'Coffee', name:'Espresso'}
+        const res = await request(app).get('/coffee').query({ coffeeName: 'Espresso' });
+    
+    expect(res.statusCode).toEqual(200);
+    
+    expect(res.body).toEqual({drinkType:'Coffee',
+                              name:'Espresso'})
+    });
+    });
 
 
     
